@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": "^7",
-    "paragonie/halite": "^3"
+    "paragonie/halite": "^3",
     "nikic/FastRoute": "^1"
   },
   "require-dev": {
