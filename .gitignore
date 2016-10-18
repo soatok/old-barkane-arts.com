@@ -1,2 +1,4 @@
 /.idea/
 /vendor/
+/data/vhosts.php
+/app/*/routes.php
