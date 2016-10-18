@@ -1,0 +1,20 @@
+{
+  "name": "barkane-arts/website",
+  "license": "MIT",
+  "type": "project",
+  "description": "The source code for barkane-arts.com",
+  "keywords": [
+    "furry",
+    "art",
+    "blog",
+    "forum"
+  ],
+  "require": {
+    "php": "^7",
+    "paragonie/halite": "^3",
+    "nikic/FastRoute": "^1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5"
+  }
+}
