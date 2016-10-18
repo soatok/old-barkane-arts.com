@@ -1,0 +1,10 @@
+STATEMENT OF COMMERCIAL LICENSE
+
+We hereby grant [Soatok](https://github.com/soatok) and any of his projects
+unlimited permission to use [Halite](https://github.com/paragonie/halite)
+under terms equivalent to the MIT license, and to license projects that
+use Halite under any license of his choosing, so long as Halite itself
+remains open source to Soatok's users.
+
+Paragon Initiative Enterprises, LLC
+2016-10-18
