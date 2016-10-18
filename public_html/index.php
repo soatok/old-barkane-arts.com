@@ -10,3 +10,4 @@ require_once \dirname(__DIR__) . '/vendor/autoload.php';
  */
 
 echo 'Hello, world! :3', PHP_EOL;
+var_dump(random_int(1,100));
