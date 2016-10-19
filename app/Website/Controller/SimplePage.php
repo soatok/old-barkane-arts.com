@@ -13,7 +13,7 @@ class SimplePage extends Controller
      * @param string $method
      * @param array ...$args
      */
-    public function __get(string $method, ...$args)
+    public function __call(string $method, array $args = [])
     {
         $this->view('simple/' . $method, $args);
     }
