@@ -1,4 +1,9 @@
-# barkane-arts.com
-Congratulations, you are one of the few people who actually bothers to follow instructions when told READ ME.
+# Barkane Arts
 
-WELL, DID YOU ACTUALLY EXPECT SOMETHING HERE?
+[Barkane Arts](https://barkane-arts.com) is the home of technological
+wizardry in the furry fandom.
+
+### Who's Behind Barkane Arts?
+
+* [Rudolf Whitechest](https://github.com/volkoseba)
+* [Soatok Dreamseeker](https://github.com/soatok)
