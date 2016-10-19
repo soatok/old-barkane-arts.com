@@ -38,7 +38,7 @@ switch ($routeInfo[0]) {
             \array_slice($routeInfo, 1, 2)
         );
         if (\strpos($route[0], '\\') === false) {
-            $class = $hostConf['namespace'] . '\\' . $route[0];
+            $class = $hostConf['namespace'] . '\\Controller\\' . $route[0];
         } else {
             $class = $route[0];
         }
