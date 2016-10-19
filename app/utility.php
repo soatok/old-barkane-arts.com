@@ -13,6 +13,9 @@ function fatalError(string $message, int $responseCode = 0)
         case 404:
             \header('HTTP/1.1 404 Not Found');
             break;
+        case 500:
+            \header('HTTP/1.1 500 Internal Server Error');
+            break;
         default:
             \header('HTTP/1.1 400 Bad Request');
     }

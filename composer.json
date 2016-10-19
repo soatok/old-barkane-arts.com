@@ -9,6 +9,12 @@
     "blog",
     "forum"
   ],
+  "autoload": {
+    "psr-4": {
+      "BarkaneArts\\Framework\\": "framework",
+      "BarkaneArts\\": "app"
+    }
+  },
   "require": {
     "php": "^7",
     "paragonie/easydb": "^2",

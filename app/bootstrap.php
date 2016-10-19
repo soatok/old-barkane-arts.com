@@ -20,17 +20,19 @@ $host = \strtolower($_SERVER['HTTP_HOST']);
 
 // Let's load the routes.php file:
 if (isset($vHosts['domains'][$host])) {
-    $dir = __DIR__ . '/' . $vHosts['domains'][$host];
-    $hostConf = $vHosts['hosts'][$vHosts['domains'][$host]];
+    define('ACTIVE_VHOST', $vHosts['domains'][$host]);
 } elseif (isset($vHosts['default_vhost'])) {
-    $dir = __DIR__ . '/' . $vHosts['default_vhost'];
-    $hostConf = $vHosts['hosts'][$vHosts['default_vhost']];
+    define('ACTIVE_VHOST', $vHosts['default_vhost']);
 } else {
+    // Fatal error:
     BarkaneArts\fatalError('No virtual host configured', 400);
 }
+
+$hostConf = $vHosts['hosts'][ACTIVE_VHOST];
+
 require_once BarkaneArts\getDataFile(
-    $dir . '/routes.php',
-    $dir . '/routes.tpl.php'
+    __DIR__ . '/' . ACTIVE_VHOST . '/routes.php',
+    __DIR__ . '/' . ACTIVE_VHOST . '/routes.tpl.php'
 );
 
 /**
@@ -61,13 +63,16 @@ if ($routeCache) {
     );
 }
 
-if (\is_readable($dir . '/bootstrap.php')) {
-    include_once $dir . '/bootstrap.php';
-}
+require_once __DIR__ . '/twig.php';
+
+require_once BarkaneArts\getDataFile(
+    __DIR__ . '/' . ACTIVE_VHOST . '/database.php',
+    __DIR__ . '/' . ACTIVE_VHOST . '/database.tpl.php'
+);
 
 /**
  * Finally load any other boilerplate we need:
  */
-if (\is_readable($dir . '/bootstrap.php')) {
-    include_once $dir . '/bootstrap.php';
+if (\is_readable(__DIR__ . '/' . ACTIVE_VHOST . '/bootstrap.php')) {
+    include_once __DIR__ . '/' . ACTIVE_VHOST . '/bootstrap.php';
 }

@@ -2,13 +2,15 @@
 declare(strict_types=1);
 
 use FastRoute\Dispatcher;
+use ParagonIE\EasyDB\EasyDB;
 
 require_once \dirname(__DIR__) . '/vendor/autoload.php';
 require_once \dirname(__DIR__) . '/app/bootstrap.php';
 
 /**
- * @global array $hostConf
+ * @global EasyDB $database
  * @global Dispatcher $dispatcher
+ * @global array $hostConf
  */
 
 // Fetch method and URI from somewhere
@@ -32,7 +34,21 @@ switch ($routeInfo[0]) {
         BarkaneArts\fatalError('Method not allowed', 408);
         break;
     case FastRoute\Dispatcher::FOUND:
-        var_dump(\array_slice($routeInfo, 1));
+        list ($route, $args) = \array_values(
+            \array_slice($routeInfo, 1, 2)
+        );
+        if (\strpos($route[0], '\\') === false) {
+            $class = $hostConf['namespace'] . '\\' . $route[0];
+        } else {
+            $class = $route[0];
+        }
+        $controller = new $class($twig, $database);
+        try {
+            $method = $route[1];
+            $controller->{$method}(...$args);
+        } catch (\Throwable $e) {
+            BarkaneArts\fatalError('Internal Server Error', 500);
+        }
         break;
 }
 
