@@ -1,16 +1,133 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
+        <meta charset="utf-8">
+        <style>
+             /* CSS to be placed into a separate style sheet when I get a round tuit */
+        body { background-color: turquoise;
+            font-family: "Helvetica", sans-serif;
+        }
+        #wrapper { margin: auto;
+            max-width: 1400px;
+            background-color: transparent;
+            margin: 0 auto;
+        }
+        header { height: 150px;
+            margin-top: 0;
+            background-color: #2ecc71;
+            color: white;
+        }
+        /* Having the nav line up perfectly with the header and body looked a bit funny--
+        margin-left: 20px looks better, but will need to be eliminated in the media query */
+        nav { font-weight: bold;
+            font-size: 1.25em;
+            margin-left: 20px;
+        }
+        main { display: block;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px 20px;
+            overflow: auto;
+        }
+        footer { font-size: .75em;
+            font-style: italic;
+            text-align: center;
+            padding: 10px;
+            background-color: #2ecc71;
+            clear: both;
+        }
+        h1 { text-indent: 3%;
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 6em;
+            margin: 0;
+            line-height: 200%;
+        }
+        nav a { text-decoration: none;
+            padding: 10px;
+            background-color: #3498db;
+        }
+        /* the nav a padding overlaps the header and body a bit when the ul has no padding or margin
+         I like the way this looks when the wrapper has a transparent background*/
+        nav ul { padding: 0;
+            margin: 0;
+        }
+        nav li { display: inline-block;
+        }
+        nav a:link { color: #ffffff; }
+        nav a:visited { color: #f1c40f; }
+        nav a:hover { color: #2ecc71; }
+        /* From this point to the end of the style sheet, media queries are used.
+        CSS here will only have an effect when the width of the screen or window is below what max-width is set at. */
+        @media only screen and (max-width: 960px) {
+            body { margin: 0px;
+                padding: 0px;
+                background-color: white; }
+            #wrapper { width: auto;
+                min-width: 0;
+                margin: 0; }
+            h1 { margin: 0;
+                padding-top: 0px;
+                text-align: center;
+                font-size: 5em;
+                line-height: 200%;
+                text-indent: 0%;
+                padding-top: 20px; }
+            h2 { padding-top: 20px;  }
+            /* can't have my nice centered nav for mobile devices indented by that margin-left: 20px from before
+            get rid of that silliness */
+            nav { width: auto;
+                display: block;
+                margin-left: 0; }
+            nav a { padding: 0;
+                margin-top: 10px;
+                margin-left: 0;
+                display: block;
+                border-style: none;
+                font-size: 2em; }
+            /* List items display as block by default-- setting display: block causes them to display vertically, and
+            is necessary inside a media query if the nav li was set to inline or inline-block outside the media query */
+            nav li { display: block; }
+            nav ul { text-align: center; }
+            main { margin: 0;
+                padding-top: 0;
+                padding-bottom: 0;
+                padding-left: 1em;
+                padding-right: 1em;
+                font-size: 90%; }
+        } /* end first media query */
+        @media only screen and (max-width: 725px) {
+            h1 { font-size: 4em;
+            }
+
+        } /* end second media query */
+        </style>
     {% block head %}
         <title>Barkane Arts</title>
     {% endblock %}
     </head>
     <body>
+    <div id="wrapper">
+        <header><h1>Barkane Arts</h1></header>
+        <nav><ul>
+                <li><a href="https://www.barkane-arts.com">Home</a></li>
+                <li><a href="services.html">Woof</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="whatevertheforumslinkis">Forums</a></li>
+            </ul>
+        </nav>
     {% block body %}
         <h3>HTTP/1.1 404 Not Found</h3>
         <p>
             (Base template.)
         </p>
     {% endblock %}
+        <footer>Copyright &copy; 2016 Soatok Dreamseeker and Rudolf Whitechest</footer>
+        <!-- When do we just stop this shim nonsense and just slap everyone who still uses any version of IE in 2016? -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+        </script>
+        <![endif]-->
+    </div> <!-- end of wrapper -->
     </body>
 </html>
