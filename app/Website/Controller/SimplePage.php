@@ -2,7 +2,8 @@
 declare(strict_types=1);
 
 namespace BarkaneArts\Website\Controller;
-use \BarkaneArts\Framework\Controller;
+
+use BarkaneArts\Framework\Controller;
 
 /**
  * Class SimplePage
