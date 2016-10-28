@@ -6,7 +6,7 @@ use ParagonIE\Cookie\{
     Session
 };
 
-\ini_set('session.entropy_length', 32);
-\ini_set('session.cookie_httponly', true);
+\ini_set('session.entropy_length', '32');
+\ini_set('session.cookie_httponly', 'On');
 
 Session::start(Cookie::SAME_SITE_RESTRICTION_STRICT);
