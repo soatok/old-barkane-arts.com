@@ -4,7 +4,10 @@ namespace BarkaneArts\Website\Controller;
 
 use BarkaneArts\Framework\Alerts\UserAuthenticationFailed;
 use BarkaneArts\Framework\Controller;
-use BarkaneArts\Website\InputFilters\LoginFilter;
+use BarkaneArts\Website\InputFilters\{
+    LoginFilter,
+    RegisterFilter
+};
 use BarkaneArts\Website\Model\User;
 use ParagonIE\Cookie\Session;
 use ParagonIE\Halite\HiddenString;
