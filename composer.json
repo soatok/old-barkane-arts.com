@@ -17,10 +17,13 @@
   },
   "require": {
     "php": "^7",
+    "paragonie/anti-csrf": "^2",
+    "paragonie/cookie": "^3",
     "paragonie/easydb": "^2",
     "paragonie/halite": "^3",
     "nikic/fast-route": "^1",
     "psr/http-message": "^1",
+    "simones/dotnot": "^1",
     "twig/twig": "^1"
   },
   "require-dev": {

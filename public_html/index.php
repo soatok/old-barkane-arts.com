@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use BarkaneArts\Framework\Controller;
 use FastRoute\Dispatcher;
 use ParagonIE\EasyDB\EasyDB;
 
@@ -45,10 +46,12 @@ switch ($routeInfo[0]) {
         $controller = new $class($twig, $database);
         try {
             $method = $route[1];
+            if ($controller instanceof Controller) {
+                $controller->beforeRoute();
+            }
             $controller->{$method}(...$args);
         } catch (\Throwable $e) {
             BarkaneArts\fatalError('Internal Server Error', 500);
         }
         break;
 }
-

@@ -52,3 +52,17 @@ function getDataFile(string $desiredFilename, string $templateFilePath): string
     }
     return $desiredFilename;
 }
+
+/**
+ * Send an HTTP header to redirect the browser to
+ *
+ * @param string $url
+ */
+function redirect(string $url, string $message = '')
+{
+    \header('Location: ' . $url);
+    echo $message
+        ? $message
+        : ('Please proceed to: ' . PHP_EOL . $url);
+    exit;
+}

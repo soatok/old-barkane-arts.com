@@ -2,7 +2,9 @@
 declare(strict_types=1);
 namespace BarkaneArts\Framework;
 
-use \ParagonIE\EasyDB\EasyDB;
+use BarkaneArts\Framework\Reusable\Security;
+use ParagonIE\Cookie\Session;
+use ParagonIE\EasyDB\EasyDB;
 
 /**
  * Class Controller
@@ -10,6 +12,8 @@ use \ParagonIE\EasyDB\EasyDB;
  */
 class Controller
 {
+    use Security;
+
     /**
      * @var array
      */
@@ -34,10 +38,13 @@ class Controller
      * Controller constructor.
      * @param \Twig_Environment|null $twig
      * @param EasyDB|null $db
+     * @param Session $session
+     * @param string $namespace
      */
     public function __construct(
         \Twig_Environment $twig = null,
         EasyDB $db = null,
+        Session $session = null,
         string $namespace = ''
     ) {
         $this->twig = $twig;
@@ -93,5 +100,13 @@ class Controller
         if (!$dontExit) {
             exit(0);
         }
+    }
+
+    /**
+     * NOP. Overload this in inherited classes.
+     */
+    public function beforeRoute()
+    {
+        $this->traitSecuritySetup();
     }
 }

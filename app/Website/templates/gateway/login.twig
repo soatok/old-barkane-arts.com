@@ -1,0 +1,17 @@
+{% extends "base.twig" %}
+
+{% block body %}
+    <main>
+        <h2>Login</h2>
+        <form method="post">
+            {{ csrf_token() }}
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required="required" />
+
+            <label for="passphrase">Passphrase:</label>
+            <input type="password" name="passphrase" id="passphrase" required="required" />
+
+            <button type="submit">Login</button>
+        </form>
+    </main>
+{% endblock %}
