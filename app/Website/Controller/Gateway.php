@@ -38,18 +38,26 @@ class Gateway extends Controller
     public function login()
     {
         if (Session::get('userid')) {
+            // You're already logged in!
             \BarkaneArts\redirect('/dashboard');
         }
+
         $post = $this->getPostData(new LoginFilter());
-        if ($post) {
+        if (!empty($post['username']) && !empty($post['passphrase'])) {
+            // POST data was provided. Let's attempt to login.
             try {
                 $userData = $this->user->login(
                     $post['username'],
                     new HiddenString($post['passphrase'])
                 );
+
+                // If an exception wasn't thrown, it returned data...
                 $_SESSION['userid'] = (int) $userData['userid'];
+
+                // Redirect to the homepage.
                 \BarkaneArts\redirect('/');
             } catch (UserAuthenticationFailed $ex) {
+                // @todo log the failure here.
                 \BarkaneArts\redirect('/login');
             }
         }
