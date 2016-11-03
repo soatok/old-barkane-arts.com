@@ -1,0 +1,28 @@
+{% extends "base.twig" %}
+
+{% block body %}
+    <main>
+            <h2>Contact</h2>
+            <form name="contactform" method="POST" action="Sendform.php">
+                <ul style="list-style: none; margin-left: 40px;">
+                    <li><label for="name">name:</label><br>
+                        <input type="text" name="name" id="name" required="required" />
+                    </li>
+
+                    <li><label for="email address">email:</label><br>
+                        <input type="email" name="email" id="email address" required="required" />
+                    </li>
+
+                    <li><label for="subject">subject:</label><br>
+                        <input type="text" name="subject" id="subject" required="required" />
+                    </li>
+
+                    <li><label for="message">your message:</label><br>
+                        <textarea id="message" class="input" name="message" rows="7" cols="40" required="required"></textarea>
+                    </li>
+
+                    <li><input type="submit" value="send" id="button" />
+                    </li>
+            </form>
+    </main>
+{% endblock %}
