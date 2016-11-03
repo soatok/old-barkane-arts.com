@@ -29,6 +29,11 @@ $routes = [
         '/register',
         ['Gateway', 'register']
     ],
+    [
+        ['GET', 'POST'],
+        '/contact',
+        ['Sendform', 'contact']
+    ],
 ];
 
 $routeCache = [
