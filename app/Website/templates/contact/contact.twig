@@ -12,7 +12,7 @@
                     <li>{{ error|e('html') }}</li>
                 {% endfor %}
             </ul>
-            {% endfor %}
+            {% endif %}
             <form name="contactform" method="POST">
                 {{ csrf_token() }}
                 <ul style="list-style: none; margin-left: 40px;">
