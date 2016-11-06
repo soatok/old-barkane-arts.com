@@ -3,7 +3,18 @@
 {% block body %}
     <main>
             <h2>Contact</h2>
-            <form name="contactform" method="POST" action="Sendform.php">
+            {% if error_messages|length > 0 %}
+            <p>
+                Please correct these errors:
+            </p>
+            <ul>
+                {% for error in error_messages %}
+                    <li>{{ error|e('html') }}</li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+            <form name="contactform" method="POST">
+                {{ csrf_token() }}
                 <ul style="list-style: none; margin-left: 40px;">
                     <li><label for="name">name:</label><br>
                         <input type="text" name="name" id="name" required="required" />
