@@ -3,3 +3,4 @@
 /data/vhosts.php
 /app/*/database.php
 /app/*/routes.php
+/composer.lock
