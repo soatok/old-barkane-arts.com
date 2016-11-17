@@ -28,6 +28,22 @@ class Sendform extends Controller
                     ['homedir' => DATA_DIR]
                 );
                 $fingerprint = '052EC4EF72EF66F3BBE3C74385A4C89D9BDFA52D';
+
+                /**
+                 * RUN THIS ONCE - It imports the public key.
+                 */
+                try {
+                    $exported = $gpgMailer->export($fingerprint);
+                } catch (\Crypt_GPG_KeyNotFoundException $ex) {
+                    $gpgMailer->import(
+                        "----- BEGIN PGP PUBLIC KEY -----
+
+PUT IT HERE
+
+----- END PGP PUBLIC KEY -----"
+                    );
+                }
+
                 $gpgMailer->send($message, $fingerprint);
 
                 echo "Message sent";
